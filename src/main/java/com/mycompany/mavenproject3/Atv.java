@@ -47,10 +47,11 @@ public class Atv { //clasa se numeste ATV sau Atv, who knows
         this.price=price;
         this.weight=weight;
         this.mileage=mileage;
+        //se adauga Engine+ Transmission
         this.photo=new ImageIcon(photo.getImage());//not sure 100%
     }
 
-    Atv(Atv copy) { //se adauga Engine+ Transmission 
+    Atv(Atv copy) { 
         
         
           this.id = copy.id;
@@ -61,13 +62,58 @@ public class Atv { //clasa se numeste ATV sau Atv, who knows
         this.price=copy.price;
         this.weight=copy.weight;
         this.mileage=copy.mileage;
+        //se adauga Engine+ Transmission 
         this.photo=new ImageIcon(copy.photo.getImage());//not sure 100%
     }
 
     @Override
     public String toString() {
         
-        return "Id: "+id+" Brand: "+" Model:"+model+" An de fabricatie: "+year+" Culoare: "+color+" Pret: "+price+" Greutate: "+weight+" kg "+""+mileage ;//se adauga Engine+ Transmission
+        return "Id: "+id+" Brand: "+" Model:"+model+" An de fabricatie: "+year+" Culoare: "+color+" Pret: "+price+" Greutate: "+weight+" kg "+" Kilometraj: "+mileage+" Motor: "+"Transmisie" /*se adauga Engine+ Transmission*/ ;
     }
+    public int getId() 
+    { return id; } 
+    public void setId(int id) 
+    { this.id = id; }
+    
+    public String getBrand() 
+    { return brand; } 
+    public void setBrand(String brand) 
+    { this.brand = brand; } 
+    
+    public String getModel() 
+    { return model; } 
+    public void setModel(String model) 
+    { this.model = model; } 
+    
+    public int getYear() 
+    { return year; } 
+    public void setYear(int year)
+    { this.year = year; } 
+    
+    public Color getColor() 
+    { return color; } 
+    public void setColor(Color color) 
+    { this.color = color; }
+    
+    public int getPrice() 
+    { return price; } 
+    public void setPrice(int price) 
+    { this.price = price; }
+    
+    public int getWeight() 
+    { return weight; } 
+    public void setWeight(int weight) 
+    { this.weight = weight; }
+    
+    public double getMileage()
+    { return mileage; } 
+    public void setMileage(int mileage) 
+    { this.mileage = mileage; } 
+    
+    public ImageIcon getPhoto() 
+    { return photo; } 
+    public void setPhoto(ImageIcon photo) 
+    { this.photo = photo; }
 //Setters/Getters
 }
