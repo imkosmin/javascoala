@@ -115,5 +115,5 @@ public class Atv { //clasa se numeste ATV sau Atv, who knows
     { return photo; } 
     public void setPhoto(ImageIcon photo) 
     { this.photo = photo; }
-//Setters/Getters
+
 }
