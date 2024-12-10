@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors; 
+import java.util.stream.Stream;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -76,6 +79,9 @@ public class Game extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(36, 17));
+        jLabel3.setMinimumSize(new java.awt.Dimension(36, 17));
+        jLabel3.setPreferredSize(new java.awt.Dimension(36, 17));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,11 +103,11 @@ public class Game extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(114, 114, 114)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -126,8 +132,8 @@ public class Game extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    String text;//textul intreg
-
+    String text1;//textul intreg
+    String text2;
     String terminat;
     long startTime = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -137,16 +143,20 @@ public class Game extends javax.swing.JFrame {
         jLabel3.setFont(new Font("Didot", Font.PLAIN, 24));
 
         if (iterator % 2 == 0) {
-            text = chooser2();//engleza
+            //engleza
+            text1 = chooser().substring(0, chooser().length()/2);
+            text2 = chooser().substring(chooser().length()/2);
         //    jLabel1.setText(chooser2());
 
         } else {
-            text = chooser();
+            text1 = chooser().substring(0, chooser().length()/2);
+             text2 = chooser().substring(chooser().length()/2);
             //jLabel1.setText(chooser());
 
         }
         textiterator=0;
-          jLabel3.setText("<html>"+"<font color='green'>"+text.charAt(0)+"</font>"+"</font>"+"<font color='white'>"+text.substring(1,text.length())+"</font>"+"</html>");
+          jLabel3.setText("<html>"+"<font color='green'>"+text1.charAt(0)+"</font>"+"</font>"+"<font color='white'>"+text1.substring(1,text1.length())+"</font>"+"</html>");
+          jLabel1.setText("<html>"+"<font color='green'>"+text2.charAt(0)+"</font>"+"</font>"+"<font color='white'>"+text2.substring(1,text2.length())+"</font>"+"</html>");
      
               
   
@@ -163,24 +173,53 @@ public class Game extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     int textiterator=0;
-
+    int textiteratorswitch=0;
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
      
- if ((textiterator) != text.length()) {
+ if ((textiterator) != text1.length()) {
 // "<html>H<font color='red'>e</font>llo World!</html>"
+if( textiterator<text1.length()){
         if(textiterator>0)
-             jLabel3.setText("<html>"/**/+"<font color='white'>"+text.substring(0,textiterator)+"</font>"+"<font color='green'>"+text.charAt(textiterator)+"</font>"+"<font color='white'>"+text.substring(textiterator+1,text.length())+"</font>"+"</html>");
+             jLabel3.setText("<html>"/**/+"<font color='white'>"+text1.substring(0,textiterator)+"</font>"+"<font color='green'>"+text1.charAt(textiterator)+"</font>"+"<font color='white'>"+text1.substring(textiterator+1,text1.length())+"</font>"+"</html>");
+        
+        
              
-      if(!(text.charAt(textiterator)==evt.getKeyChar()&&(text.length()!=0)))
+      if(!(text1.charAt(textiterator)==evt.getKeyChar()&&(text1.length()!=0)))
       {
 
                  if(textiterator>0)
-                     jLabel3.setText("<html>"+"<font color='white'>"+text.substring(0,textiterator)+"</font>"+"<font color='red'>"+text.charAt(textiterator)+"</font>"+"</font>"+"<font color='white'>"+text.substring(textiterator+1,text.length())+"</font>"+"</html>");
+                     jLabel3.setText("<html>"+"<font color='white'>"+text1.substring(0,textiterator)+"</font>"+"<font color='red'>"+text1.charAt(textiterator)+"</font>"+"</font>"+"<font color='white'>"+text1.substring(textiterator+1,text1.length())+"</font>"+"</html>");
       }
       else
       {
        textiterator++;
       }
+ }
+ 
+ 
+ 
+ 
+ 
+      String textC=text1+text2;
+ if ((textiterator) != textC.length()) {
+// "<html>H<font color='red'>e</font>llo World!</html>"
+if(textiterator>text1.length()){
+        if(textiterator>0)
+             jLabel1.setText("<html>"/**/+"<font color='white'>"+text2.substring(0,textiterator-text1.length())+"</font>"+"<font color='green'>"+text2.charAt(textiterator)+"</font>"+"<font color='white'>"+text2.substring(textiterator+1-text1.length(),textC.length()-text1.length())+"</font>"+"</html>");
+        
+        
+             
+      if(!(text2.charAt(textiterator-text1.length())==evt.getKeyChar()&&(text2.length()!=0)))
+      {
+
+                 if(textiterator>0)
+                     jLabel1.setText("<html>"+"<font color='white'>"+text2.substring(0,textiterator-text1.length())+"</font>"+"<font color='red'>"+text2.charAt(textiterator-text1.length())+"</font>"+"</font>"+"<font color='white'>"+text2.substring(textiterator+1-text1.length(),textC.length()-text1.length())+"</font>"+"</html>");
+      }
+      else
+      {
+       textiterator++;
+      }
+ }
  }
  else
  {    long elapsedTime = System.currentTimeMillis() - startTime;
@@ -191,7 +230,7 @@ public class Game extends javax.swing.JFrame {
             jLabel1.setText("End" + " Time: " + secondsDisplay + "s");
             jLabel1.setForeground(Color.red);
  }
-  
+ }
       // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyPressed
 
@@ -236,36 +275,50 @@ public class Game extends javax.swing.JFrame {
 
     private String chooser() {
 
+String finalstring="";
         File file = new File("textfile1.txt");
 
-        try {
-            return Files.lines(Paths.get("textfile1.txt"))
-                    .skip((int) (Math.random() * 10))
-                    .findFirst()
-                    .orElse("");
-
-        } catch (IOException e) {
+{ String filePath = "textfile1.txt"; // Replace with the path to your file 
+try (Stream<String> lines = Files.lines(Paths.get(filePath))) { 
+    List<String> randomLines = lines .skip((int) (Math.random() * 10)) // Skip a random number of lines 
+        .limit(2) // Limit to 3 lines
+        .collect(Collectors.toList());
+for (String line : randomLines) {
+        finalstring+=line+" ";
+    }   
+}
+         catch (IOException e) {
             System.err.println("Error reading purchases.txt: " + e.getMessage());
             return "";
         }
-
+}
+return finalstring;
     }
 
     private String chooser2() {
-
+String finalstring="";
         File file = new File("textfile2.txt");
 
-        try {
-            return Files.lines(Paths.get("textfile2.txt"))
-                    .skip((int) (Math.random() * 10)) // Skip the first 4 lines (0-based index)
-                    .findFirst() // Get the 5th line
-                    .orElse(""); // Return an empty string if the file has less than 5 lines
-
-        } catch (IOException e) {
+{ String filePath = "textfile2.txt"; // Replace with the path to your file 
+try (Stream<String> lines = Files.lines(Paths.get(filePath))) { 
+    List<String> randomLines = lines 
+            .skip((int) (Math.random() * 10)) // Skip a random number of lines 
+        .limit(2) // Limit to 5 lines
+        .collect(Collectors.toList());
+for (String line : randomLines) {
+        finalstring+=line+" ";
+    }   
+}
+         catch (IOException e) {
             System.err.println("Error reading purchases.txt: " + e.getMessage());
             return "";
         }
-    }
+    //
+}
+
+return finalstring;
+
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
